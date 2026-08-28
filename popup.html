@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Consulta com Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul-petroleo:#002D72;
+    --azul-escuro:#0072CE;
+    --azul-claro:#41B6E6;
+    --verde:#12855F;    --verde-bg:#E7F5EF;
+    --vermelho:#D64550; --vermelho-bg:#FCECEE;
+    --texto:#1B2A41;
+    --texto-fraco:#6B7A90;
+    --borda:#E4E9F2;
+    --fundo:#F5F7FB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    width:380px;min-height:420px;font-family:'Poppins',Helvetica,sans-serif;
+    background:var(--fundo);color:var(--texto);font-size:13px;
+  }
+  header{
+    background:var(--azul-petroleo);color:#fff;padding:14px 16px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  header h1{font-size:15px;font-weight:600}
+  header a{color:rgba(255,255,255,.75);text-decoration:none;font-size:11px}
+  header a:hover{color:#fff}
+
+  .conteudo{padding:16px}
+  .busca{display:flex;gap:8px;margin-bottom:14px}
+  .busca input{
+    flex:1;border:1px solid var(--borda);border-radius:8px;padding:9px 10px;
+    font-family:inherit;font-size:13px;outline:none;
+  }
+  .busca input:focus{border-color:var(--azul-escuro)}
+  .busca button{
+    border:0;background:var(--azul-escuro);color:#fff;border-radius:8px;
+    padding:9px 14px;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;
+  }
+  .busca button:disabled{opacity:.55;cursor:default}
+  .busca button:hover:not(:disabled){background:#005CA8}
+
+  .aviso{
+    border-radius:8px;padding:10px 12px;font-size:12px;margin-bottom:12px;
+    background:var(--vermelho-bg);color:var(--vermelho);
+  }
+  .aviso a{color:inherit;font-weight:600}
+  .vazio{color:var(--texto-fraco);text-align:center;padding:24px 8px;font-size:12px}
+
+  .resultado{
+    border:1px solid var(--borda);border-radius:10px;padding:10px 12px;
+    margin-bottom:8px;background:#fff;
+  }
+  .resultado .nome{font-weight:500;margin-bottom:4px;word-break:break-word}
+  .resultado .estagio{
+    display:inline-block;font-size:11px;font-weight:600;color:var(--verde);
+    background:var(--verde-bg);border-radius:6px;padding:2px 8px;margin-bottom:6px;
+  }
+  .resultado a{font-size:11px;color:var(--azul-escuro);text-decoration:none}
+  .resultado a:hover{text-decoration:underline}
+
+  .carregando{text-align:center;padding:24px 8px;color:var(--texto-fraco);font-size:12px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Consulta com Hub</h1>
+  <a href="options.html" target="_blank">Configurar token</a>
+</header>
+
+<div class="conteudo">
+  <div class="busca">
+    <input type="text" id="nome" placeholder="Nome do cliente...">
+    <button id="botaoBuscar">Buscar</button>
+  </div>
+
+  <div id="area-resultado">
+    <div class="vazio">Digite um nome e busque no pipeline Sucesso.</div>
+  </div>
+</div>
+
+<script src="hubspot.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

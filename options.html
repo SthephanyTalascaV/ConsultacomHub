@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Configurar — Consulta com Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul-petroleo:#002D72;
+    --azul-escuro:#0072CE;
+    --verde:#12855F;    --verde-bg:#E7F5EF;
+    --texto:#1B2A41;
+    --texto-fraco:#6B7A90;
+    --borda:#E4E9F2;
+    --fundo:#F5F7FB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Poppins',Helvetica,sans-serif;background:var(--fundo);color:var(--texto);
+    max-width:520px;margin:0 auto;padding:32px 24px;font-size:14px;
+  }
+  h1{font-size:20px;font-weight:600;margin-bottom:6px;color:var(--azul-petroleo)}
+  p{color:var(--texto-fraco);font-size:13px;line-height:1.5;margin-bottom:18px}
+  ol{color:var(--texto-fraco);font-size:13px;line-height:1.7;margin:0 0 18px 18px}
+  code{background:#fff;border:1px solid var(--borda);border-radius:4px;padding:1px 5px;font-size:12px}
+  label{display:block;font-size:12px;font-weight:600;color:var(--texto-fraco);margin-bottom:6px}
+  input{
+    width:100%;border:1px solid var(--borda);border-radius:8px;padding:10px 12px;
+    font-family:inherit;font-size:13px;outline:none;margin-bottom:12px;
+  }
+  input:focus{border-color:var(--azul-escuro)}
+  button{
+    border:0;background:var(--azul-escuro);color:#fff;border-radius:8px;
+    padding:10px 18px;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;
+  }
+  button:hover{background:#005CA8}
+  .status{font-size:12px;margin-top:10px;display:none}
+  .status.ok{color:var(--verde);display:block}
+</style>
+</head>
+<body>
+  <h1>Consulta com Hub</h1>
+  <p>Cole abaixo o token de um Private App do HubSpot com acesso de leitura a negócios (deals). O token fica salvo só neste navegador.</p>
+
+  <ol>
+    <li>No HubSpot, vá em <strong>Configurações → Integrações → Apps privados</strong>.</li>
+    <li>Crie (ou abra) um app privado com o escopo <code>crm.objects.deals.read</code>.</li>
+    <li>Copie o token gerado e cole aqui.</li>
+  </ol>
+
+  <label for="token">Token do HubSpot</label>
+  <input type="password" id="token" placeholder="pat-na1-xxxxxxxx-xxxx-...">
+  <button id="salvar">Salvar</button>
+  <div class="status" id="status">Salvo!</div>
+
+<script src="options.js"></script>
+</body>
+</html>
