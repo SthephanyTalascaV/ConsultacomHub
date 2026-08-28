@@ -16,12 +16,15 @@ function mostrarMensagem(html) {
 
 function mostrarErro(erro) {
   const mapa = {
-    'SEM_TOKEN': 'Nenhum token do HubSpot configurado. <a href="options.html" target="_blank">Configure aqui</a>.',
-    'TOKEN_INVALIDO': 'Token do HubSpot inválido ou expirado. <a href="options.html" target="_blank">Revise nas configurações</a>.',
-    'SEM_PERMISSAO': 'Este token não tem permissão para ler negócios (deals) no HubSpot.',
+    'SEM_API_BASE': 'Nenhuma URL do dashboard configurada. <a href="options.html" target="_blank">Configure aqui</a>.',
+    'SEM_TOKEN_NO_SERVIDOR': 'O dashboard ainda não tem o token do HubSpot configurado (variável HUBSPOT_TOKEN na Vercel).',
+    'TOKEN_INVALIDO': 'O token do HubSpot configurado na Vercel está inválido ou expirado.',
+    'SEM_PERMISSAO': 'Esse token não tem permissão para ler negócios (deals) no HubSpot.',
     'PIPELINE_NAO_ENCONTRADO': 'Não encontrei um pipeline chamado "Sucesso" nesta conta do HubSpot.',
   };
-  const texto = mapa[erro.message] || 'Não foi possível consultar o HubSpot agora. Tente novamente.';
+  const texto = mapa[erro.message] ||
+    'Não foi possível consultar o HubSpot agora. Verifique a URL do dashboard nas ' +
+    '<a href="options.html" target="_blank">configurações</a> e tente novamente.';
   mostrarMensagem('<div class="aviso">' + texto + '</div>');
 }
 

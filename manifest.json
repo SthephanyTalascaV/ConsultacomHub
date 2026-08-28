@@ -23,7 +23,7 @@
   },
   "options_page": "options.html",
   "permissions": ["storage"],
-  "host_permissions": ["https://api.hubapi.com/*"],
+  "host_permissions": ["https://*.vercel.app/*"],
   "externally_connectable": {
     "matches": [
       "https://*.vercel.app/*",
