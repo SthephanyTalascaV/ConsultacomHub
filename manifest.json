@@ -22,8 +22,8 @@
     "service_worker": "background.js"
   },
   "options_page": "options.html",
-  "permissions": ["storage"],
-  "host_permissions": ["https://*.vercel.app/*"],
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["https://*.vercel.app/*", "https://metabase.nibo.com.br/*"],
   "externally_connectable": {
     "matches": [
       "https://*.vercel.app/*",
