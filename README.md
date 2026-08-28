@@ -48,6 +48,25 @@ extensão já com o nome do cliente preenchido e a busca disparada.
 - Só é permitida uma consulta por vez — o botão de busca fica desabilitado
   enquanto uma requisição está em andamento.
 
+## Sincronizar Ativação (Metabase → HubSpot)
+
+Além da busca, a extensão lê a pergunta **9619** ("Sucesso | Controle Todos
+os produtos") do Metabase e usa isso pra atualizar a propriedade `ativacao`
+dos deals correspondentes no HubSpot.
+
+1. Abra `https://metabase.nibo.com.br/question/9619-...` com os filtros que
+   quiser (Cs, Limitdate etc.).
+2. Com essa aba em foco, clique no ícone da extensão e depois em
+   **"Ver prévia"**.
+3. A extensão chama a própria API do Metabase (com a sua sessão já logada —
+   nenhuma senha é lida ou guardada) pra pegar as linhas da pergunta, manda
+   pro dashboard cruzar cada uma com o deal correto no HubSpot pelo par
+   (id_nibo, produto), e mostra o que vai mudar.
+4. Clique em **"Aplicar"** pra gravar as mudanças de fato no HubSpot.
+
+Isso exige que o `manifest.json` libere `host_permissions` para
+`https://metabase.nibo.com.br/*` (já incluso por padrão).
+
 ## Limitações conhecidas
 
 - Só funciona quando o dashboard é aberto por `http://` ou `https://`

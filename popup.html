@@ -63,6 +63,35 @@
   .resultado a:hover{text-decoration:underline}
 
   .carregando{text-align:center;padding:24px 8px;color:var(--texto-fraco);font-size:12px}
+
+  .separador{border-top:1px solid var(--borda);margin:18px 0 14px}
+  .secao-titulo{font-size:13px;font-weight:600;margin-bottom:4px}
+  .secao-ajuda{font-size:11px;color:var(--texto-fraco);line-height:1.4;margin-bottom:10px}
+  .botao-largo{
+    width:100%;border:0;background:var(--azul-petroleo);color:#fff;border-radius:8px;
+    padding:10px 14px;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;
+  }
+  .botao-largo:disabled{opacity:.55;cursor:default}
+  .botao-largo:hover:not(:disabled){background:#001f52}
+  .botao-largo.verde{background:var(--verde)}
+  .botao-largo.verde:hover:not(:disabled){background:#0d6b4c}
+
+  .resumo{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+  .resumo span{
+    font-size:11px;font-weight:600;border-radius:6px;padding:3px 8px;
+    background:var(--fundo);color:var(--texto-fraco);border:1px solid var(--borda);
+  }
+  .resumo span.destaque{background:var(--verde-bg);color:var(--verde);border-color:transparent}
+  .resumo span.problema{background:var(--vermelho-bg);color:var(--vermelho);border-color:transparent}
+
+  .linha-sync{
+    border:1px solid var(--borda);border-radius:8px;padding:8px 10px;
+    margin-bottom:6px;font-size:12px;background:#fff;
+  }
+  .linha-sync .principal{font-weight:500;margin-bottom:2px;word-break:break-word}
+  .linha-sync .detalhe{color:var(--texto-fraco);font-size:11px}
+  .linha-sync.problema{background:var(--vermelho-bg);border-color:transparent}
+  .linha-sync.problema .principal{color:var(--vermelho)}
 </style>
 </head>
 <body>
@@ -81,9 +110,20 @@
   <div id="area-resultado">
     <div class="vazio">Digite um nome e busque no pipeline Sucesso.</div>
   </div>
+
+  <div class="separador"></div>
+
+  <div class="secao-titulo">Sincronizar Ativação (Metabase → HubSpot)</div>
+  <div class="secao-ajuda">
+    Abra a pergunta 9619 no Metabase, deixe os filtros como quiser, e com essa
+    aba em foco clique aqui.
+  </div>
+  <button id="botaoSincronizar" class="botao-largo">Ver prévia</button>
+  <div id="area-sincronizacao"></div>
 </div>
 
 <script src="hubspot.js"></script>
+<script src="metabase.js"></script>
 <script src="popup.js"></script>
 </body>
 </html>
