@@ -21,8 +21,6 @@
   }
   h1{font-size:20px;font-weight:600;margin-bottom:6px;color:var(--azul-petroleo)}
   p{color:var(--texto-fraco);font-size:13px;line-height:1.5;margin-bottom:18px}
-  ol{color:var(--texto-fraco);font-size:13px;line-height:1.7;margin:0 0 18px 18px}
-  code{background:#fff;border:1px solid var(--borda);border-radius:4px;padding:1px 5px;font-size:12px}
   label{display:block;font-size:12px;font-weight:600;color:var(--texto-fraco);margin-bottom:6px}
   input{
     width:100%;border:1px solid var(--borda);border-radius:8px;padding:10px 12px;
@@ -40,16 +38,14 @@
 </head>
 <body>
   <h1>Consulta com Hub</h1>
-  <p>Cole abaixo o token de um Private App do HubSpot com acesso de leitura a negócios (deals). O token fica salvo só neste navegador.</p>
+  <p>
+    O token do HubSpot agora fica no próprio dashboard (variável de ambiente
+    <code>HUBSPOT_TOKEN</code> na Vercel), não aqui na extensão. Só precisa
+    informar em qual endereço o dashboard está publicado.
+  </p>
 
-  <ol>
-    <li>No HubSpot, vá em <strong>Configurações → Integrações → Apps privados</strong>.</li>
-    <li>Crie (ou abra) um app privado com o escopo <code>crm.objects.deals.read</code>.</li>
-    <li>Copie o token gerado e cole aqui.</li>
-  </ol>
-
-  <label for="token">Token do HubSpot</label>
-  <input type="password" id="token" placeholder="pat-na1-xxxxxxxx-xxxx-...">
+  <label for="apiBase">URL do dashboard (Vercel)</label>
+  <input type="text" id="apiBase" placeholder="https://hub-meta.vercel.app">
   <button id="salvar">Salvar</button>
   <div class="status" id="status">Salvo!</div>
 
