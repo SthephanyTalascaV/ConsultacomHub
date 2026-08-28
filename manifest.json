@@ -1,5 +1,6 @@
 {
   "manifest_version": 3,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmM4wXRXBXl2Y0yz6kvoEnDfbuWZJiT0+EVxksh2ob6UZhLcEiMH1XdWJgUvEcVMvH8UgQz9DYHuQUemt9QQ+uZ4m0K5lyEartC5m68Smc6EAUbTRwiEdRGP4hL8LN5dANJ3IgaOzMX0fBCa3hLJPQTzTBV2OjddpGHUCiFC2q1G4MTrcbP8vntUh2iX2i6Oq4UZhBAGYX8lv39jsQJG1qs333gbAxeUSCR9qjiiegsXlsmUjPnGfq4m9r9vjY4lPg4eTuqWJ+GGuw4hsCDmHBSbR3gcvlW3NG1Xh+igLBpwsqxvFBr/9C8eqktBtTaIofR5HNWL013PPYU7l3nOKbwIDAQAB",
   "name": "Consulta com Hub — Nibo",
   "description": "Consulta rápida de clientes no pipeline Sucesso do HubSpot, direto do navegador.",
   "version": "1.0.0",

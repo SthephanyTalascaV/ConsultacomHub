@@ -19,8 +19,11 @@ para configurar essa variável.
 1. Acesse `chrome://extensions`.
 2. Ative o **Modo do desenvolvedor** (canto superior direito).
 3. Clique em **Carregar sem compactação** e selecione a pasta deste repositório.
-4. Copie o **ID** que o Chrome atribuiu à extensão (aparece no card dela) —
-   você vai precisar dele no dashboard.
+4. A ID que aparece no card da extensão deve ser sempre
+   `jpnllahknmhdpdjbhjmagipabdkiibjo` — o `manifest.json` já traz uma chave
+   fixa (`key`) só pra isso, então a ID não muda de computador pra
+   computador nem se a pasta for movida. Se aparecer uma ID diferente,
+   confira se o `manifest.json` carregado é mesmo o deste repositório.
 
 ## Configurar a URL do dashboard
 
@@ -32,10 +35,12 @@ para configurar essa variável.
 
 ## Conectar com o dashboard Ativação da Carteira
 
-No arquivo do dashboard, defina o ID copiado no passo 4 acima na constante
-`EXTENSAO_CONSULTA_HUB_ID` (procure por esse nome no `<script>`). Depois de
-salvo, o botão **"Consultar no Hub"** de cada linha da tabela abre esta
-extensão já com o nome do cliente preenchido e a busca disparada.
+O dashboard já vem configurado com a ID fixa acima na constante
+`EXTENSAO_CONSULTA_HUB_ID` (procure por esse nome no `<script>` do
+[hubMeta](https://github.com/SthephanyTalascaV/hubMeta)) — não precisa copiar
+nada manualmente. Depois de carregar a extensão, o botão **"Consultar no
+Hub"** de cada linha da tabela já abre ela com o nome do cliente preenchido
+e a busca disparada.
 
 ## Como funciona
 
