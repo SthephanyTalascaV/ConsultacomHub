@@ -5,6 +5,15 @@ cliente, uma consulta por vez. Feita pra ser acionada pelo botão "Consultar
 no Hub" do dashboard [Ativação da Carteira](https://github.com/SthephanyTalascaV/hubMeta),
 mas também funciona sozinha pelo ícone da extensão na barra do Chrome.
 
+## Onde fica o token do HubSpot
+
+O token **não** fica salvo na extensão. Ele mora no próprio dashboard, como
+variável de ambiente `HUBSPOT_TOKEN` no projeto da Vercel — a extensão só
+chama a API do dashboard (`/api/hubspot-buscar`), que é quem de fato conversa
+com o HubSpot. Ver o repositório
+[hubMeta](https://github.com/SthephanyTalascaV/hubMeta) (`api/hubspot-buscar.js`)
+para configurar essa variável.
+
 ## Instalar (modo desenvolvedor)
 
 1. Acesse `chrome://extensions`.
@@ -13,13 +22,13 @@ mas também funciona sozinha pelo ícone da extensão na barra do Chrome.
 4. Copie o **ID** que o Chrome atribuiu à extensão (aparece no card dela) —
    você vai precisar dele no dashboard.
 
-## Configurar o token do HubSpot
+## Configurar a URL do dashboard
 
 1. Clique no ícone da extensão → **Configurar token**.
-2. No HubSpot: **Configurações → Integrações → Apps privados** → crie (ou
-   abra) um app com o escopo `crm.objects.deals.read`.
-3. Cole o token na página de configuração e salve. Ele fica só no seu
-   navegador (`chrome.storage.local`), nunca sai daqui.
+2. Cole a URL onde o dashboard está publicado na Vercel (ex.:
+   `https://hub-meta.vercel.app`) e salve.
+3. Se o dashboard usar outro domínio (não `*.vercel.app`, ex. um domínio
+   próprio), adicione-o também em `host_permissions` no `manifest.json`.
 
 ## Conectar com o dashboard Ativação da Carteira
 
@@ -33,10 +42,9 @@ extensão já com o nome do cliente preenchido e a busca disparada.
 - `background.js` recebe a mensagem externa do dashboard
   (`chrome.runtime.sendMessage(ID, {type:'consultar', nome})`) e abre o
   popup com o nome já preenchido.
-- `popup.js` busca o pipeline "Sucesso" na API do HubSpot (`GET
-  /crm/v3/pipelines/deals`, cacheado por 1h) e depois busca negócios nesse
-  pipeline cujo nome contenha o termo digitado (`POST
-  /crm/v3/objects/deals/search`).
+- `popup.js`/`hubspot.js` chamam `GET {URL do dashboard}/api/hubspot-buscar?nome=...`,
+  que roda no servidor (Vercel) com o token do HubSpot, resolve o pipeline
+  "Sucesso" e devolve os negócios cujo nome contém o termo buscado.
 - Só é permitida uma consulta por vez — o botão de busca fica desabilitado
   enquanto uma requisição está em andamento.
 
@@ -47,5 +55,6 @@ extensão já com o nome do cliente preenchido e a busca disparada.
   disco (`file://`) não permite a comunicação com a extensão — é uma
   restrição do próprio Chrome para `externally_connectable`.
 - Por padrão o `manifest.json` libera mensagens de `*.vercel.app` e
-  `localhost`. Se o dashboard for publicado em outro domínio, adicione-o
-  em `externally_connectable.matches`.
+  `localhost`, e permite que a extensão chame `*.vercel.app` sem CORS. Se o
+  dashboard for publicado em outro domínio, adicione-o em
+  `externally_connectable.matches` e `host_permissions`.
